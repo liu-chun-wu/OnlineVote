@@ -4,7 +4,7 @@
 <head>
     <title>投票結果</title>
     <meta charset="utf-8">
-    <script src="../js/jquery.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="../js/custom.js"></script>
 </head>

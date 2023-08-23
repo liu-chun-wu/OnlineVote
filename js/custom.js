@@ -3,25 +3,46 @@ function goto(url) {
 }
 function printChart() {
     $(document).ready(function () {
-        const xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-        const yValues = [55, 49, 44, 24, 15];
-        const barColors = ["red", "green", "blue", "orange", "brown"];
+        let xValues = [];
+        let yValues = [];
+        $.ajax({
+            url: "../api/result.php",
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                for (let i = 0; i < response.length; i++) {
+                    xValues.push(response[i]['name']);
+                    yValues.push(response[i]['score']);
 
-        new Chart("myChart", {
-            type: "bar",
-            data: {
-                labels: xValues,
-                datasets: [{
-                    backgroundColor: barColors,
-                    data: yValues
-                }]
-            },
-            options: {
-                legend: { display: false },
-                title: {
-                    display: true,
-                    text: "World Wine Production 2018"
+                    new Chart("myChart", {
+                        type: "bar",
+                        data: {
+                            labels: xValues,
+                            datasets: [{
+                                backgroundColor: "blue",
+                                data: yValues
+                            }]
+                        },
+                        options: {
+                            legend: { display: false },
+                            title: {
+                                display: true,
+                                text: "投票結果統計"
+                            },
+                            scales: {
+                                xAxes: [{
+                                    gridLines: {
+                                        display: false
+                                    }
+                                }]
+                            }
+                        }
+                    });
                 }
+            },
+            error: function () {
+                alert('傳送失敗');
             }
         });
     })

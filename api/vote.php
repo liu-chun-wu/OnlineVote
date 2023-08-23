@@ -5,4 +5,4 @@ $target = $candidate->findById($_POST['id']);
 $vote = $target['score'];
 $vote++;
 $candidate->updateByArray(['score' => $vote, 'id' => $_POST['id']]);
-to("../index.php");
+to("../front/result.php");
