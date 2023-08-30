@@ -1,3 +1,8 @@
+<?
+include_once "../setting.php";
+$candidate = new DB('candidate');
+$data = $candidate->all();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -16,6 +21,16 @@
         <script>
             printChart();
         </script>
+        <table style="width: 600px">
+            <tr align='center'>
+                <?
+                //print_r($data);
+                foreach ($data as $ket => $value) {
+                    echo "<td>" . $value['score'] . "</td>";
+                }
+                ?>
+            </tr>
+        </table>
         <p><a href='../index.php'>回首頁</a></p>
     </div>
 
